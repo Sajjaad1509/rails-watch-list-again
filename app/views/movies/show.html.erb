@@ -1,24 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row movie-display">
+    <div class="col-lg-6">
+      <img class="img-display-poster" src="<%= @movie.poster_url %>" >
+    </div>
+    <div class="col-lg-6 movie-display-content">
+      <div class="movie-header-content">
+        <h5 class="movie-title"><%= @movie.title %></h5>
+        <p class="btn-movie-edit"><%= link_to "Edit movie", edit_movie_path(@movie) %></p>
+      </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</p>
+      <div>
+        <p><span class="movie-rating"><%= @movie.rating %></span></p>
+      </div>
 
-<p>
-  <strong>Overview:</strong>
-  <%= @movie.overview %>
-</p>
-
-<p>
-  <strong>Poster url:</strong>
-  <%= @movie.poster_url %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @movie.rating %>
-</p>
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+        <p>
+          <%= @movie.overview %>
+        </p>
+    </div>
+  </div>
+</div>

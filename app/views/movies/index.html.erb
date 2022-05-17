@@ -2,6 +2,7 @@
 
 <h1>Movies</h1>
 
+<!--
 <table>
   <thead>
     <tr>
@@ -18,7 +19,7 @@
       <tr>
         <td><%= movie.title %></td>
         <td><%= movie.overview %></td>
-        <td><%= movie.poster_url %></td>
+        <td><img class="img-display-poster" src="<%= movie.poster_url %>" ></td>
         <td><%= movie.rating %></td>
         <td><%= link_to 'Show', movie %></td>
         <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
@@ -27,6 +28,48 @@
     <% end %>
   </tbody>
 </table>
+-->
+
+<!--
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <% @movies.each do |movie| %>
+  <div class="col">
+    <div class="card h-100">
+            <img src="<%= movie.poster_url %>" class="img-fluid rounded-start" alt="movie poster">
+            <p class="card-text"><small class="text-muted"><%= link_to 'Show', movie %></small></p>
+            <p class="card-text"><small class="text-muted"><%= link_to 'Edit', edit_movie_path(movie) %></small></p>
+            <p class="card-text"><small class="text-muted"><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></small></p>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= movie.title %></h5>
+              <p class="card-text"><%= movie.overview %></p>
+              <p class="card-text"><small class="text-muted"><%= movie.rating %></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+-->
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <% @movies.each do |movie| %>
+    <div class="col">
+      <div class="card h-100">
+        <img src="<%= movie.poster_url %>" class="card-img-top" alt="<%= movie.title %>">
+        <div class="card-body">
+          <h5 class="card-title"><%= movie.title %></h5>
+          <p class="card-text"><%= movie.overview %></p>
+        </div>
+          <div class="card-footer">
+            <p class="card-text"><%= movie.rating %></p>
+          </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <br>
 

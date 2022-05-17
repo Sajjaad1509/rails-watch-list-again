@@ -1,7 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Lists</h1>
 
+<!--
 <table>
   <thead>
     <tr>
@@ -15,12 +14,30 @@
       <tr>
         <td><%= list.name %></td>
         <td><%= link_to 'Show', list %></td>
-        <td><%= link_to 'Edit', edit_list_path(list) %></td>
+        <td><%= link_to 'Add Bookmark', new_bookmark_path %></td>
         <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+-->
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <% @lists.each do |list| %>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= list.name %></h5>
+          <nav class="nav nav-pills flex-column flex-sm-row">
+            <div class="flex-sm-fill text-sm-center nav-link" aria-current="page"><%= link_to 'Show', list %></div>
+            <div class="flex-sm-fill text-sm-center nav-link" aria-current="page"><%= link_to 'Add Movie', new_movie_path %></div>
+            <div class="flex-sm-fill text-sm-center nav-link" aria-current="page"><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <br>
 
