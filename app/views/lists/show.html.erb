@@ -65,26 +65,34 @@
       <div class="col-lg-6">
         <h2><%= @list.name %> Movies</h2>
         <div class="btn-style">
-          <p><%= link_to "Bookmark",  new_bookmark_path(@list), class: 'btn-book' %></p>
-          <p><%= link_to "Edit", edit_list_path(@list), class: 'btn-edit' %></p>
-          <p><%= link_to "Delete", edit_list_path(@list), class: 'btn-delete' %></p>
+          <p><%= link_to 'Add Movie to List (Create a bookmark)',  new_list_bookmark_path(@list), class: 'btn btn-outline-primary' %></p>
         </div>
        </div>
     </div>
 
     <hr>
 
-
-    <div class="movies-grid">
-      <% @list.movies.each do |movie| %>
-      <div class="box-poster">
-        <img class="img-poster" src="<%= movie.poster_url %>">
-        <p class="movie-path"><%= link_to movie.title, movie_path(movie) %></p>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <% @list.movies.each do |movie| %>
+      <div class="col">
+        <div class="card h-100">
+          <img src="<%= movie.poster_url %>" class="card-img-top" alt="<%= movie.title %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= movie.title %></h5>
+            <p class="card-text"><%= movie.overview %></p>
+            <% movie.bookmarks.each do |bookmark| %>
+              <strong>Comment: </strong>
+              <p class="card-text"><%= bookmark.comment if bookmark.list_id == @list.id %></p>
+            <% end %>
+          </div>
+            <div class="card-footer">
+              <p class="card-text"><%= movie.rating %></p>
+            </div>
+        </div>
       </div>
-      <% end %>
-    </div>
-
+    <% end %>
   </div>
+
 </div>
 
 <%= link_to 'Edit', edit_list_path(@list) %>
