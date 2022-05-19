@@ -1,27 +1,5 @@
 <h1>Lists</h1>
 
-<!--
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @lists.each do |list| %>
-      <tr>
-        <td><%= list.name %></td>
-        <td><%= link_to 'Show', list %></td>
-        <td><%= link_to 'Add Bookmark', new_bookmark_path %></td>
-        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
--->
-
 <div class="row row-cols-1 row-cols-md-2 g-4">
   <% @lists.each do |list| %>
     <div class="col">
